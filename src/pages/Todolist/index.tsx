@@ -1,27 +1,30 @@
 import React, {useState} from 'react';
-import {Button, Checkbox, Input,  List} from 'antd';
+import {Button, Checkbox, Input, List} from 'antd';
 import styles from './index.less';
 
+interface todos {
+    key: number;
+    text: string;
+    editable: boolean;
+}
 
 const Todolist: React.FC = () => {
-
-    interface todos {
-        key: number;
-        text: string;
-    }
 
     const initdata: todos[] = [
         {
             key: 1,
             text: '使用脚手架初始化一个项目',
+            editable: false
         },
         {
             key: 2,
             text: '创建组件路由',
+            editable: false
         },
         {
             key: 3,
             text: '开始写组件',
+            editable: false
         }]
     //思路：
     //最终呈现的效果：点击按钮获取输入框的值
@@ -48,6 +51,9 @@ const Todolist: React.FC = () => {
     const [value, setValue] = useState('');
     let [data, setData] = useState(initdata);
     let [idx, setIdx] = useState<number>();
+    let [idxs, setIdxs] = useState<[]>([]);
+    const [val, setVal] = useState('');
+
 
     const inputValue = (e: { target: { value: React.SetStateAction<string>; }; }) => {
         setValue(e.target.value)
@@ -61,24 +67,90 @@ const Todolist: React.FC = () => {
         //通过把data转换为字符串在转成换对象改变地址
         newData.push({
             key: data.length + 1,
-            text: value
+            text: value,
+            editable: false
         });
         setData(newData);
         console.log(newData);
     }
 
-    const delValue = ()=>{
-        // 复制当前数组
-        let newData = [...data]
-        //根据key值找下标
-        if (idx != null){
-            newData.splice(idx,1);
+    const addIdxs=(e:any,item:todos)=>{
+        let newIdx = idxs;
+        // @ts-ignore
+        e.target.checked && newIdx.push(item.key);
+        if (!e.target.checked) {
+            for (let i in newIdx) {
+                if (item.key == newIdx[i]) {
+                    // @ts-ignore
+                    newIdx.splice(i, 1);
+                }
+            }
         }
-        //通过下标删除元素
-
-        setData(newData);
-        console.log(newData);
+        setIdxs(newIdx);
     }
+
+    const delValue = () => {
+        // // 复制当前数组
+        // let newData = [...data]
+        // //根据key值找下标
+        // if (idx != null) {
+        //     newData.splice(idx, 1);
+        // }
+        // //通过下标删除元素
+        // setData(newData);
+        // console.log(newData);
+        // 排序
+        // @ts-ignore
+        idxs.sort((a,b)=>{return b - a;});
+        let newData = [...data];
+        for (let id of idxs) {
+            for (let i = newData.length; i > 0; i--) {
+                if (newData[i - 1].key == id) {
+                    newData.splice(i-1, 1);
+                }
+            }
+        }
+        setData(newData);
+    }
+
+    const editValue = (item: todos) => {
+        item.editable = !item.editable;
+        let newData = [...data];
+        newData.map(it => {
+            if (it.key == item.key) {
+                it = item;
+            } else {
+                it.editable = false;
+            }
+        });
+        setData(newData);
+    }
+
+    const saveValue = (item: any) => {
+        let newData = [...data];
+        newData.map(it => {
+            if (it.key == item.key) {
+                it.text = val;
+                it.editable = false;
+            }
+        });
+        setData(newData);
+    }
+
+    const handleChange = (e: any) => {
+        setVal(e.target.value)
+    }
+
+    const cancel = (item: any) => {
+        let newData = [...data];
+        newData.map(it => {
+            if (it.key == item.key) {
+                it.editable = false;
+            }
+        });
+        setData(newData);
+    }
+
 
     //选中checkbox时 将值放入获取的地方
     //遍历列表 列表的key=选中的key
@@ -89,12 +161,10 @@ const Todolist: React.FC = () => {
 // );
 
 
-
     // useEffect(()=>{
     //     console.log(value)
     // },[value]);
     //依赖改变时，执行useEffect里的代码(取值问题）
-
     return (
         <div className={styles.all}>
             <div className={styles.title}>TODO DEMO</div>
@@ -110,11 +180,23 @@ const Todolist: React.FC = () => {
                             dataSource={data}
                             renderItem={(item, index) => (
                                 <List.Item>
-                                    <Checkbox onClick={()=>{console.log(index);
-                                        setIdx(index)}}></Checkbox>
+                                    <Checkbox onChange={(e) => {
+                                        addIdxs(e,item);
+                                    }}></Checkbox>
                                     <List.Item.Meta
-                                        description={<span className={styles.liststext}>{item.text}</span>}
+                                        description={item.editable ?
+                                            <Input className={styles.liststext}
+                                                   onChange={handleChange}></Input> : item.text}
                                     />
+                                    {!item.editable && <Button onClick={() => {
+                                        editValue(item);
+                                    }}>编辑</Button>}
+                                    {item.editable && <Button onClick={() => {
+                                        saveValue(item);
+                                    }}>保存</Button>}
+                                    {item.editable && <Button onClick={() => {
+                                        cancel(item);
+                                    }}>取消</Button>}
                                 </List.Item>
                             )}
                         />
