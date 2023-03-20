@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7dcef16-0ccc-4a42-b5ea-7b83c3aa5453" name="Changes" comment="todolist中的checkbox实现多个删除、新增编辑按钮，编修input框内容">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.npmrc" beforeDir="false" afterPath="$PROJECT_DIR$/.npmrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.umirc.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.umirc.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/components/myForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/components/myForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Todolist/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Todolist/index.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="d7dcef16-0ccc-4a42-b5ea-7b83c3aa5453" name="Changes" comment="todolist中的checkbox实现多个删除、新增编辑按钮，编修input框内容" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,7 +88,7 @@
       <workItem from="1679207277193" duration="167000" />
       <workItem from="1679237103901" duration="1208000" />
       <workItem from="1679240259240" duration="445000" />
-      <workItem from="1679276224470" duration="615000" />
+      <workItem from="1679276224470" duration="940000" />
     </task>
     <task id="LOCAL-00001" summary="代码提交">
       <created>1678357733147</created>
