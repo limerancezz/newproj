@@ -50,7 +50,7 @@ const Todolist: React.FC = () => {
 
     const [value, setValue] = useState('');
     let [data, setData] = useState(initdata);
-    let [idx, setIdx] = useState<number>();
+    // let [idx, setIdx] = useState<number>();
     let [idxs, setIdxs] = useState<[]>([]);
     const [val, setVal] = useState('');
 
@@ -75,14 +75,20 @@ const Todolist: React.FC = () => {
     }
 
     const addIdxs=(e:any,item:todos)=>{
+        //两个参数的原因：点击事件必须有event
         let newIdx = idxs;
-        // @ts-ignore
+        console.log(e);
+        //newIdx是一个空数组
         e.target.checked && newIdx.push(item.key);
+        console.log('newIdx',newIdx);
+        //选中时，把选中的key值放到空数组中
         if (!e.target.checked) {
             for (let i in newIdx) {
+                //i为下标，newIdx的数组中为选中的key值
                 if (item.key == newIdx[i]) {
-                    // @ts-ignore
+                   //根据原数组中的key值和newIdex里的值相等找到需要删除的下标
                     newIdx.splice(i, 1);
+                    //把数组中选中的下标删除
                 }
             }
         }
@@ -90,23 +96,14 @@ const Todolist: React.FC = () => {
     }
 
     const delValue = () => {
-        // // 复制当前数组
-        // let newData = [...data]
-        // //根据key值找下标
-        // if (idx != null) {
-        //     newData.splice(idx, 1);
-        // }
-        // //通过下标删除元素
-        // setData(newData);
-        // console.log(newData);
-        // 排序
-        // @ts-ignore
-        idxs.sort((a,b)=>{return b - a;});
         let newData = [...data];
         for (let id of idxs) {
+            //let of遍历数组中的每一项，id就为选中的key值
             for (let i = newData.length; i > 0; i--) {
                 if (newData[i - 1].key == id) {
+                    //data中每一项的key和选中的key值（id）进行对比
                     newData.splice(i-1, 1);
+                    //删除数据，从头开始删数组下标有变化
                 }
             }
         }

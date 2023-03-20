@@ -1,0 +1,21 @@
+/*.button{*/
+/*    display:flex;*/
+/*    width:500px;*/
+/*}*/
+.all{
+    width:1000px;
+    height: 1000px;
+}
+.MedicalOption{
+    height:10px;
+}
+.InspectionInformation{
+    height: 18px;
+}
+.ant-col .ant-form-item-label label{
+    width:81px
+}
+
+.divider{
+    margin: 10px;
+}

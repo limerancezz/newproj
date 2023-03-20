@@ -15,6 +15,7 @@
     "@ant-design/pro-components": "^2.0.1",
     "@umijs/max": "^4.0.25",
     "antd": "^4.20.7",
+    "hihis-biz": "^2.7.27",
     "react": "^18.2.0"
   },
   "devDependencies": {

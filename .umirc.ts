@@ -47,13 +47,19 @@ export default defineConfig({
             path: '/todolist',
             component: './Todolist',
         },
-    ],
-    proxy: {
-        '/api': {
-            target: 'http://0.0.0.0:8080',
-            changeOrigin: true,
-            pathRewrite: {'^/api': ''},
+        {
+            name: '检验医疗单',
+            path: '/laboratorymedicalorder',
+            component: './LaboratoryMedicalOrder',
         },
-    },
-    npmClient: 'npm',
+    ],
+    // proxy: {
+    //     '/api': {
+    //         // target: 'http://0.0.0.0:8080',
+    //         target: 'http://10.10.0.23/api',
+    //         changeOrigin: true,
+    //         // pathRewrite: {'^/api': ''},
+    //     },
+    // },
+    // npmClient: 'npm',
 });
