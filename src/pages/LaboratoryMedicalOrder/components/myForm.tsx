@@ -1,17 +1,29 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import type {DatePickerProps} from 'antd';
 import {Button, Checkbox, Col, DatePicker, Divider, Form, Input, Row, Select, Space} from 'antd';
 import BillingDetails from "./BillingDetails";
 import styles from '../index.css';
+import moment from "moment";
 
-const MyForm: React.FC = () => {
+const MyForm: React.FC = (props) => {
+    console.log(props);
     const [form] = Form.useForm();
+    const handleOk = props.handleOk;
+    const handleCancel = props.handleCancel;
     const onSure = () => {
+        handleOk();
         console.log(form.getFieldsValue())
     }
 
     const onReset = () => {
         form.resetFields();
+        form.setFieldsValue(returnedData.medOrd)
+        handleCancel();
+        // 先重置form表单数据，再给不需要修改的地方赋值
+        // 如果不写resetFields，就是恢复成最开始调用的接口数据，如果form中的表单字段并没有在后台接口中，将会不重置，引发bug
+
+        // setFieldsValue设置表单的值（该值将直接传入 form store 中。如果你不希望传入对象被修改，请克隆后传入）。
+        // 如果你只想修改 Form.List 中单项值，请通过 setFieldValue 进行指定
     };
     // TODO:his框架
     const returnedData = {
@@ -51,15 +63,8 @@ const MyForm: React.FC = () => {
     };
 
 
-
     const TimeChange: DatePickerProps['onChange'] = (date, dateString) => {
     };
-    // TODO:获取表单数据      √
-    // TODO:模拟请求数据      √
-    // TODO:按钮偏移，看文档中Row      √
-    // TODO:按钮功能实现（提交、取消）      √
-    // TODO:实现屏幕右下角按钮（绝对定位），点击展开
-    // TODO:日期时间获取
 
     const TextChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         console.log('TextChange:', e.target.value);
@@ -69,9 +74,9 @@ const MyForm: React.FC = () => {
     useEffect(function () {
         setTimeout(function () {
             form.setFieldsValue(returnedData.medOrd);
-        },300);
+        }, 300);
         // request().then();
-    },[]);
+    }, []);
 
     return (
         <div>
@@ -155,7 +160,11 @@ const MyForm: React.FC = () => {
                         <Col span={10}>
                             <Form.Item>
                                 <Space>
-                                    开单时间：<DatePicker style={{width: 280}} onChange={TimeChange}/>
+                                    开单时间：<DatePicker style={{width: 280}}
+                                                         defaultValue={moment()} showTime
+                                                         onChange={(date, dateType) => {
+                                                             console.info(date, dateType)
+                                                         }}/>
                                 </Space>
                             </Form.Item>
                         </Col>
@@ -210,7 +219,7 @@ const MyForm: React.FC = () => {
                     </Row>
                 </Form.Item>
             </Form>
-            <BillingDetails />
+            <BillingDetails/>
         </div>
 
     )

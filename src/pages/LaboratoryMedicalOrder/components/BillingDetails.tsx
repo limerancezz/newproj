@@ -45,7 +45,7 @@ const BillingDetails: React.FC = () => {
             dataIndex: 'operate',
             render: (text,record,index) => {
                 return (
-                    <div><PlusCircleOutlined onClick={addData}/>
+                    <div><PlusCircleOutlined onClick={()=>{addData(text,record,index)}}/>
                         &nbsp;&nbsp;&nbsp;&nbsp;
                         <DeleteOutlined onClick={()=>{delValue(text,record,index)}} />
                     </div>
@@ -82,13 +82,16 @@ const BillingDetails: React.FC = () => {
             key: 'amount',
         },
     ];
-    const addData = () => {
+    const addData = (text: any, record: any, index: number) => {
+        console.log(text);
+        console.log(record);
+        console.log(index);
         let newData = [...data];
         // 1)如上
         // 2)let newData = JSON.parse(JSON.stringify(data));
         //声明新变量的原因：data是个对象，直接改值引用地址不变
         //通过把data转换为字符串在转成换对象改变地址
-        newData.push({
+        newData.splice(index+1,0,{
             key: (new Date()).getTime(),
             operate: true,
             serviceItems: "",
@@ -120,7 +123,7 @@ const BillingDetails: React.FC = () => {
                     let totalAmount = 0;
 
                     pageData.forEach(({amount}) => {
-                        totalAmount += amount;
+                        totalAmount += amount ? +amount : 0;
                     });
 
                     return (
