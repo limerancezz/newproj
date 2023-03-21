@@ -26,12 +26,12 @@ const LaboratoryMedicalOrder: React.FC = () => {
     // TODO：取消按钮取消了不可改变的信息  √
     // TODO：添加input框没有从下一个元素开始添加  √
     // TODO：sum的时候会自动变为字符串而不是数字  √
-    // TODO:合计框的合并
+    // TODO:合计框的合并  √
     // TODO:获取表单数据  √
     // TODO:模拟请求数据  √
     // TODO:按钮偏移，看文档中Row  √
     // TODO:按钮功能实现（提交、取消） √
-    //
+
 
     return (
         <div className={styles.all}>
@@ -39,7 +39,7 @@ const LaboratoryMedicalOrder: React.FC = () => {
                 <Button type="primary" className={styles.btnPosition} onClick={showModal}>
                     打开窗口
                 </Button>
-                <Modal title="Basic Modal" width={1000} open={isModalOpen} onCancel={handleCancel}
+                <Modal  width={1000} open={isModalOpen} onCancel={handleCancel}
                        footer={null}>
                     {
                         simulateData && simulateData.medOrd && <MyForm handleOk={handleOk} handleCancel={handleCancel}/>

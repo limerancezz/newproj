@@ -5,8 +5,9 @@ import BillingDetails from "./BillingDetails";
 import styles from '../index.css';
 import moment from "moment";
 
-const MyForm: React.FC = (props) => {
+const MyForm: React.FC = (props:any) => {
     console.log(props);
+    //打印出来是两个object对象，分别为handleOk和handleCancel
     const [form] = Form.useForm();
     const handleOk = props.handleOk;
     const handleCancel = props.handleCancel;
@@ -19,6 +20,7 @@ const MyForm: React.FC = (props) => {
         form.resetFields();
         form.setFieldsValue(returnedData.medOrd)
         handleCancel();
+
         // 先重置form表单数据，再给不需要修改的地方赋值
         // 如果不写resetFields，就是恢复成最开始调用的接口数据，如果form中的表单字段并没有在后台接口中，将会不重置，引发bug
 
@@ -170,7 +172,7 @@ const MyForm: React.FC = (props) => {
                         </Col>
                         <Col span={2}>
                             <Form.Item>
-                                <Checkbox>急诊</Checkbox>
+                                <Checkbox style={{width: 100}}className={styles.emergencyTreatment}>急诊</Checkbox>
                             </Form.Item>
                         </Col>
                     </Row>

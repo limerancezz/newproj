@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7dcef16-0ccc-4a42-b5ea-7b83c3aa5453" name="Changes" comment="检验医疗单页面展示">
+    <list default="true" id="d7dcef16-0ccc-4a42-b5ea-7b83c3aa5453" name="Changes" comment="实现屏幕右下角按钮（绝对定位）等功能">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/components/BillingDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/components/BillingDetails.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/components/myForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/components/myForm.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +90,7 @@
       <workItem from="1679207277193" duration="167000" />
       <workItem from="1679237103901" duration="1208000" />
       <workItem from="1679240259240" duration="445000" />
-      <workItem from="1679276224470" duration="21169000" />
+      <workItem from="1679276224470" duration="21657000" />
     </task>
     <task id="LOCAL-00001" summary="代码提交">
       <created>1678357733147</created>
@@ -124,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679277504211</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="实现屏幕右下角按钮（绝对定位）等功能">
+      <created>1679317663384</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679317663384</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,7 +149,8 @@
     <MESSAGE value="README.md" />
     <MESSAGE value="todolist中的checkbox实现多个删除、新增编辑按钮，编修input框内容" />
     <MESSAGE value="检验医疗单页面展示" />
-    <option name="LAST_COMMIT_MESSAGE" value="检验医疗单页面展示" />
+    <MESSAGE value="实现屏幕右下角按钮（绝对定位）等功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="实现屏幕右下角按钮（绝对定位）等功能" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

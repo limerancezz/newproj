@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Input, Table, Typography} from 'antd';
 import type {ColumnsType} from 'antd/es/table';
 import {DeleteOutlined, PlusCircleOutlined} from "@ant-design/icons";
+import styles from '../index.css';
 
 const {Text} = Typography;
 
@@ -125,17 +126,16 @@ const BillingDetails: React.FC = () => {
                     pageData.forEach(({amount}) => {
                         totalAmount += amount ? +amount : 0;
                     });
-
-                    return (
-                        <>
-                            <Table.Summary.Row>
-                                <Table.Summary.Cell index={0} rowSpan={6}>
-                                    <Text>合计：{totalAmount}</Text>
-                                </Table.Summary.Cell>
-                            </Table.Summary.Row>
-                            {/*如何合并成一行*/}
-                        </>
-                    );
+                        return (
+                            <>
+                                <Table.Summary.Row>
+                                    <Table.Summary.Cell index={0} colSpan={6} className={styles.totalAmountStyle}>
+                                        <Text className={styles.textStyle}>合计：{totalAmount}</Text>
+                                    </Table.Summary.Cell>
+                                </Table.Summary.Row>
+                                {/*如何合并成一行*/}
+                            </>
+                        );
                 }}/><br/>
         </>
     );
