@@ -1,11 +1,17 @@
 import React, {useEffect} from 'react';
-import type {DatePickerProps} from 'antd';
-import {Button, Checkbox, Col, DatePicker, Divider, Form, Input, Row, Select, Space} from 'antd';
-import BillingDetails from "./BillingDetails";
+import {Button, Checkbox, Col, DatePicker, Divider, Form, Input, Row, Select, Space,} from 'antd';
+import BillingDetails from './BillingDetails';
 import styles from '../index.css';
-import moment from "moment";
+import moment from 'moment';
+import {DiagnoseEditSelector} from 'hihis-biz';
+import { labMedOrdInit} from "@/services";
 
-const MyForm: React.FC = (props:any) => {
+export interface FormProps {
+    handleOk: () => void;
+    handleCancel: () => void;
+}
+
+const MyForm: React.FC<FormProps> = (props) => {
     console.log(props);
     //打印出来是两个object对象，分别为handleOk和handleCancel
     const [form] = Form.useForm();
@@ -13,12 +19,12 @@ const MyForm: React.FC = (props:any) => {
     const handleCancel = props.handleCancel;
     const onSure = () => {
         handleOk();
-        console.log(form.getFieldsValue())
-    }
+        console.log(form.getFieldsValue());
+    };
 
     const onReset = () => {
         form.resetFields();
-        form.setFieldsValue(returnedData.medOrd)
+        form.setFieldsValue(returnedData.medOrd);
         handleCancel();
 
         // 先重置form表单数据，再给不需要修改的地方赋值
@@ -29,63 +35,84 @@ const MyForm: React.FC = (props:any) => {
     };
     // TODO:his框架
     const returnedData = {
-        "medOrd": {
-            "idMedord": "398703219301101568",
-            "sdVistpCd": "111",
-            "idVismed": "64127176dc31eb0001ee9bd3",
-            "idPi": "329802517435125760",
-            "naMedord": "白细胞杀菌功能试验(洪)",
-            "desMedord": "白细胞杀菌功能试验(洪)",
-            "sdSrvtpCd": "22",
-            "idSrvca": "611f670f032e3d6d2d4d9607",
-            "sdSrvformCd": "301",
-            "idSrvsetMedord": "342154469009571840",
-            "fgMedordUrg": "0",
-            "dtMedordActive": 1678964360000,
-            "sdUsageCd": "1",
-            "idDepExc": "60dadcf16f58d14b438c2282"
+        medOrd: {
+            idMedord: '398703219301101568',
+            sdVistpCd: '111',
+            idVismed: '64127176dc31eb0001ee9bd3',
+            idPi: '329802517435125760',
+            naMedord: '白细胞杀菌功能试验(洪)',
+            desMedord: '白细胞杀菌功能试验(洪)',
+            sdSrvtpCd: '22',
+            idSrvca: '611f670f032e3d6d2d4d9607',
+            sdSrvformCd: '301',
+            idSrvsetMedord: '342154469009571840',
+            fgMedordUrg: '0',
+            dtMedordActive: 1678964360000,
+            sdUsageCd: '1',
+            idDepExc: '60dadcf16f58d14b438c2282',
         },
-        "medOrdLab": {"cdMedordAppl": "JY2023031600197", "naMedordAppl": "白细胞杀菌功能试验(洪)"},
-        "medDieList": [{
-            "idMeddiedt": "398562247254683648",
-            "cdDie": "E10.100",
-            "naDie": "1型糖尿病性酮症",
-            "sdDiesubjtpCd": "1"
-        }],
-        "medOrdSrvList": [{
-            "idSrv": "342154469009571840",
-            "na": "白细胞杀菌功能试验(洪)",
-            "quanUnitSrvMed": 1,
-            "unitSrvMed": "次",
-            "fgEditable": "0",
-            "srvpriRef": 20,
-            "fgCg": "1",
-            "fgActive": "1"
-        }]
+        medOrdLab: {
+            cdMedordAppl: 'JY2023031600197',
+            naMedordAppl: '白细胞杀菌功能试验(洪)',
+        },
+        medDieList: [
+            {
+                idMeddiedt: '398562247254683648',
+                cdDie: 'E10.100',
+                naDie: '1型糖尿病性酮症',
+                sdDiesubjtpCd: '1',
+            },
+        ],
+        medOrdSrvList: [
+            {
+                idSrv: '342154469009571840',
+                na: '白细胞杀菌功能试验(洪)',
+                quanUnitSrvMed: 1,
+                unitSrvMed: '次',
+                fgEditable: '0',
+                srvpriRef: 20,
+                fgCg: '1',
+                fgActive: '1',
+            },
+        ],
     };
 
-
-    const TimeChange: DatePickerProps['onChange'] = (date, dateString) => {
-    };
-
-    const TextChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const TextChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => {
         console.log('TextChange:', e.target.value);
     };
     const labelCol = {style: {width: 81}};
+    //
+    // useEffect(function () {
+    //     setTimeout(function () {
+    //         form.setFieldsValue(returnedData.medOrd);
+    //     }, 300);
+    // }, []);
+
+    // useEffect(function () {
+    //     fetchUserInfo().then(res => {
+    //         form.setFieldsValue(res);
+    //     })
+    //     //页面加载时请求的接口放在页面上
+    // }, []);
 
     useEffect(function () {
-        setTimeout(function () {
-            form.setFieldsValue(returnedData.medOrd);
-        }, 300);
-        // request().then();
+        let param = {idSrv: "62ac2eb9032e3d0fe2084d29", idVismed: "6419081f6248ad0001d6da4c", wpjgwsStr: "4",
+            jzjzksbm:"BM980001|fukemz01|BM990144|BM000003|kouqiang01|nkmz01|erkemz01", sdSrvformCd:"301"}
+        // 给后台的参数
+        labMedOrdInit(param).then(res => {
+            console.log(res);
+            // form.setFieldsValue(res);
+        })
+        //页面加载时请求的接口放在页面上
     }, []);
-
     return (
         <div>
             <div>
                 <Row gutter={16}>
                     <Col>
-                        <span style={{fontSize: "20px"}}>检验医疗单</span>
+                        <span style={{fontSize: '20px'}}>检验医疗单</span>
                     </Col>
                     <Col>
                         <Select
@@ -98,7 +125,9 @@ const MyForm: React.FC = (props:any) => {
                         />
                     </Col>
                     <Col offset={12}>
-                        <Button onClick={onSure} type="primary">确认(F4)</Button>
+                        <Button onClick={onSure} type="primary">
+                            确认(F4)
+                        </Button>
                         <Button onClick={onReset}>取消(Esc)</Button>
                     </Col>
                 </Row>
@@ -122,12 +151,12 @@ const MyForm: React.FC = (props:any) => {
                         {/*栅格间隔，可以写成像素值或支持响应式的对象写法来设置水平间隔 { xs: 8, sm: 16, md: 24}。*/}
                         {/*或者使用数组形式同时设置 [水平间距, 垂直间距]*/}
                         <Col span={12}>
-                            <Form.Item label="检验名称" name="naMedord" labelCol={labelCol}>
+                            <Form.Item label="检验名称" name="naSrv" labelCol={labelCol}>
                                 <Input disabled={true}/>
                             </Form.Item>
                         </Col>
                         <Col span={12}>
-                            <Form.Item label="检验单号" name="idSrvca">
+                            <Form.Item label="检验单号" name="cdMedordAppl">
                                 <Input disabled={true}/>
                             </Form.Item>
                         </Col>
@@ -136,8 +165,11 @@ const MyForm: React.FC = (props:any) => {
                 <Form.Item className={styles.InspectionInformation}>
                     <Row gutter={16}>
                         <Col span={6}>
-                            <Form.Item name="SampleType" label="样本类型"
-                                       rules={[{required: true, message: '样本类型必填！'}]}>
+                            <Form.Item
+                                name="sampSpecimenList"
+                                label="样本类型"
+                                rules={[{required: true, message: '样本类型必填！'}]}
+                            >
                                 <Select
                                     options={[
                                         {value: 'jack', label: 'Jack'},
@@ -148,8 +180,11 @@ const MyForm: React.FC = (props:any) => {
                             </Form.Item>
                         </Col>
                         <Col span={6}>
-                            <Form.Item name="SamplingPosition" label="采样部位"
-                                       rules={[{required: true, message: '采样部位必填！'}]}>
+                            <Form.Item
+                                name="currentUserName"
+                                label="采样部位"
+                                rules={[{required: true, message: '采样部位必填！'}]}
+                            >
                                 <Select
                                     options={[
                                         {value: 'jack', label: 'Jack'},
@@ -162,25 +197,38 @@ const MyForm: React.FC = (props:any) => {
                         <Col span={10}>
                             <Form.Item>
                                 <Space>
-                                    开单时间：<DatePicker style={{width: 280}}
-                                                         defaultValue={moment()} showTime
-                                                         onChange={(date, dateType) => {
-                                                             console.info(date, dateType)
-                                                         }}/>
+                                    开单时间：
+                                    <DatePicker
+                                        style={{width: 280}}
+                                        defaultValue={moment()}
+                                        showTime
+                                        onChange={(date, dateType) => {
+                                            console.info(date, dateType);
+                                        }}
+                                    />
                                 </Space>
                             </Form.Item>
                         </Col>
                         <Col span={2}>
                             <Form.Item>
-                                <Checkbox style={{width: 100}}className={styles.emergencyTreatment}>急诊</Checkbox>
+                                <Checkbox
+                                    style={{width: 100}}
+                                    className={styles.emergencyTreatment}
+                                >
+                                    急诊
+                                </Checkbox>
                             </Form.Item>
                         </Col>
                     </Row>
                 </Form.Item>
-                <Form.Item className={styles.InspectionInformation}>
-                    <Row gutter={16}>
-                        <Col span={24}>
-                            <Form.Item name="ExecutiveDepartment" label="执行科室" labelCol={labelCol}>
+                <Form.Item className={styles.ExecutiveDepartment}>
+                    <Row gutter={32}>
+                        <Col>
+                            <Form.Item
+                                name="orgCd"
+                                label="执行科室"
+                                labelCol={labelCol}
+                            >
                                 <Select
                                     style={{width: 120}}
                                     options={[
@@ -190,7 +238,23 @@ const MyForm: React.FC = (props:any) => {
                                     ]}
                                 />
                             </Form.Item>
-
+                        </Col>
+                        <Col>
+                            <Form.Item className={styles.diagnoseEdit}>
+                                <DiagnoseEditSelector
+                                    className="medical-list"
+                                    idVismed="61482f163b61e56170e9b397"
+                                    disabled={false}
+                                    tableType="2"
+                                    sdDiescrtpCd="1"
+                                    // value="22222,ssdfdsfds"
+                                    // idMeddiedts={['296850247393390592']}
+                                    onImportSelected={(keys, datas) => {
+                                        {
+                                        }
+                                    }}
+                                />
+                            </Form.Item>
                         </Col>
                     </Row>
                 </Form.Item>
@@ -203,19 +267,33 @@ const MyForm: React.FC = (props:any) => {
                         </Col>
                     </Row>
                 </Form.Item>
-                <Form.Item className={styles.InspectionInformation} label="病情摘要" labelCol={labelCol}>
+                <Form.Item
+                    className={styles.InspectionInformation}
+                    label="病情摘要"
+                    labelCol={labelCol}
+                >
                     <Checkbox>取查体</Checkbox>
                     <Checkbox>取主诉</Checkbox>
                     <Checkbox>取现病史</Checkbox>
                 </Form.Item>
-                <Form.Item className={styles.InspectionInformation} colon={false} label=" " labelCol={labelCol}>
+                <Form.Item
+                    className={styles.InspectionInformation}
+                    colon={false}
+                    label=" "
+                    labelCol={labelCol}
+                >
                     <Input showCount maxLength={255} onChange={TextChange}/>
                 </Form.Item>
                 <Form.Item className={styles.InspectionInformation}>
                     <Row gutter={16}>
                         <Col span={24}>
                             <Form.Item name="reason" label="退回原因" labelCol={labelCol}>
-                                <Input showCount maxLength={255} onChange={TextChange} disabled={true}/>
+                                <Input
+                                    showCount
+                                    maxLength={255}
+                                    onChange={TextChange}
+                                    disabled={true}
+                                />
                             </Form.Item>
                         </Col>
                     </Row>
@@ -223,7 +301,6 @@ const MyForm: React.FC = (props:any) => {
             </Form>
             <BillingDetails/>
         </div>
-
-    )
+    );
 };
 export default MyForm;

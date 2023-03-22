@@ -53,13 +53,12 @@ export default defineConfig({
             component: './LaboratoryMedicalOrder',
         },
     ],
-    // proxy: {
-    //     '/api': {
-    //         // target: 'http://0.0.0.0:8080',
-    //         target: 'http://10.10.0.23/api',
-    //         changeOrigin: true,
-    //         // pathRewrite: {'^/api': ''},
-    //     },
-    // },
+    proxy: {
+        '/api': {
+            target: 'http://10.10.0.23/api',
+            changeOrigin: true,
+            pathRewrite: {'^/api': ''},
+        },
+    },
     // npmClient: 'npm',
 });

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Button, Col, Divider, Form, Modal, Row, Select} from 'antd';
 import styles from './index.css';
-import MyForm from "@/pages/LaboratoryMedicalOrder/components/myForm";
+import MyForm from "@/pages/LaboratoryMedicalOrder/components/MyForm";
 
 
 const LaboratoryMedicalOrder: React.FC = () => {
@@ -40,7 +40,7 @@ const LaboratoryMedicalOrder: React.FC = () => {
                     打开窗口
                 </Button>
                 <Modal  width={1000} open={isModalOpen} onCancel={handleCancel}
-                       footer={null}>
+                       footer={null} closable={false}>
                     {
                         simulateData && simulateData.medOrd && <MyForm handleOk={handleOk} handleCancel={handleCancel}/>
                     }
