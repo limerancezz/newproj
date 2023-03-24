@@ -19,4 +19,16 @@ export function labMedOrdInit(params: any = null) {
         serverMethod: 'labMedOrdInit'
     }, params);
 }
+export function getFloEc(params: any = null) {
+    return request({
+        serviceId: 'opdocnew.floEcRpc',
+        serverMethod: 'getFloEc'
+    }, params);
+}
+export function searchSrvPageList(params: any = null) {
+    return request({
+        serviceId: 'opdocnew.medOrdRpc',
+        serverMethod: 'searchSrvPageList'
+    }, params);
+}
 

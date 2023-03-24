@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d7dcef16-0ccc-4a42-b5ea-7b83c3aa5453" name="Changes" comment="功能实现">
-      <change afterPath="$PROJECT_DIR$/src/services/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/components/ServiceItemForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.umirc.ts" beforeDir="false" afterPath="$PROJECT_DIR$/.umirc.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/components/myForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/components/MyForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/components/BillingDetails.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/components/BillingDetails.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/components/MyForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/components/MyForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,11 +35,17 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/node_modules/hihis-biz/es/Request/index.d.ts" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2MgH6rbMpgRekPlpGx5fllnuwjr" />
   <component name="ProjectViewState">
@@ -60,7 +67,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.language&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/zhanghang/IdeaProject/new/newproj/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -99,6 +106,10 @@
       <workItem from="1679367197693" duration="8836000" />
       <workItem from="1679396067182" duration="7097000" />
       <workItem from="1679449666408" duration="6595000" />
+      <workItem from="1679468312675" duration="11134000" />
+      <workItem from="1679570880847" duration="8822000" />
+      <workItem from="1679621919810" duration="32000" />
+      <workItem from="1679622410649" duration="3186000" />
     </task>
     <task id="LOCAL-00001" summary="代码提交">
       <created>1678357733147</created>
@@ -142,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679383713456</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="功能实现">
+      <created>1679468413868</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1679468413868</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +185,22 @@
     <MESSAGE value="实现屏幕右下角按钮（绝对定位）等功能" />
     <MESSAGE value="功能实现" />
     <option name="LAST_COMMIT_MESSAGE" value="功能实现" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/components/MyForm.tsx</url>
+          <line>54</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/pages/LaboratoryMedicalOrder/components/ServiceItemForm.tsx</url>
+          <line>28</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -21,7 +21,7 @@ const LaboratoryMedicalOrder: React.FC = () => {
 
     // TODO:实现屏幕右下角按钮（绝对定位），点击展开  √
     // TODO:日期时间获取  √
-    // TODO:开发环境问题，接口请求报错   --------------
+    // TODO:开发环境问题，接口请求报错  √
     // TODO:modal框的确定取消按钮无效  √
     // TODO：取消按钮取消了不可改变的信息  √
     // TODO：添加input框没有从下一个元素开始添加  √
@@ -31,7 +31,11 @@ const LaboratoryMedicalOrder: React.FC = () => {
     // TODO:模拟请求数据  √
     // TODO:按钮偏移，看文档中Row  √
     // TODO:按钮功能实现（提交、取消） √
-
+    // TODO：诊断所选数据填充到页面中，表格获取当前数据
+    // TODO：双击获取接口数据，将所选数据填充到页面中，再次双击时进行过滤
+    // TODO：再次点击加号按钮，当未选中数据时，手动触动rules
+    // TODO：数据完善 √
+    // TODO：首行的禁止删除
 
     return (
         <div className={styles.all}>
