@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {Input, Table, Typography, Popover} from 'antd';
+import {Input, Popover, Table, Typography} from 'antd';
 import type {ColumnsType} from 'antd/es/table';
 import {DeleteOutlined, PlusCircleOutlined} from "@ant-design/icons";
-import styles from '../index.css';
 import ServiceItemForm from "@/pages/LaboratoryMedicalOrder/components/ServiceItemForm";
+import styles from '../index.css';
 
 const {Text} = Typography;
 

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Checkbox, Col, DatePicker, Divider, Form, Input, Row, Select, Space, SelectProps} from 'antd';
-import BillingDetails from './BillingDetails';
-import styles from '../index.css';
+import {Button, Checkbox, Col, DatePicker, Divider, Form, Input, Row, Select, Space} from 'antd';
 import moment from 'moment';
 import {DiagnoseEditSelector} from 'hihis-biz';
 import {getFloEc, labMedOrdInit} from "@/services";
+import styles from '../index.css';
+import BillingDetails from './BillingDetails';
 
 export interface FormProps {
     handleOk: () => void;
@@ -15,9 +15,11 @@ const MyForm: React.FC<FormProps> = (props) => {
     //打印props是两个object对象，分别为handleOk和handleCancel(父子组件传值）
     const labelCol = {style: {width: 81}};
     const [form] = Form.useForm();
-    const [formData, setFormData] = useState({sampSpecimenList:[{sdLabsamp:'',naLabsamp:''}],sampParttpList:[{sdLabsamppartt:'',naLabsampparttp:''}]});
-    const [optionData, setOptionData] = useState([{idDepExc:'',naDepExc:''}]);
-    const [naDepExcOptiopn,setNaDepExcOptiopn]=useState([]); // 依赖optiondata
+    const [formData, setFormData] = useState({
+        sampSpecimenList: [{sdLabsamp: '', naLabsamp: ''}],
+        sampParttpList: [{sdLabsamppartt: '', naLabsampparttp: ''}]
+    });
+    const [optionData, setOptionData] = useState([{idDepExc: '', naDepExc: ''}]);
     const [sampSpecimenListOption, setSampSpecimenListOption] = useState([]); // 依赖formdata
     const [sampParttpListOption, setSampParttpListOption] = useState([]); // 依赖formdata
     const handleOk = props.handleOk;
@@ -53,7 +55,7 @@ const MyForm: React.FC<FormProps> = (props) => {
         labMedOrdInit(param).then(res => {
             form.setFieldsValue(res);
             setFormData(res);
-            console.log('formdata',res)  // 接口返回的所有数据
+            console.log('formdata', res)  // 接口返回的所有数据
         })  // 页面加载时请求的接口放在页面上
     }, []);
     useEffect(function () {
@@ -64,31 +66,28 @@ const MyForm: React.FC<FormProps> = (props) => {
         // 给后台的参数
         getFloEc(param).then(res => {
             form.setFieldsValue(res);
-            let temp=[]
+            let temp = []
             for (let item of res) {
                 temp.push({
-                            key:item.idDepExc,
-                            value:item.naDepExc
-                        });
-                    }
+                    key: item.idDepExc,
+                    value: item.naDepExc
+                });
+            }
             setOptionData(temp);
-            console.log('optiondata',temp)  // 接口返回的所有数据
-            console.log('optiondata',optionData)  // 接口返回的所有数据
+            console.log('optiondata', temp)  // 接口返回的所有数据
+            console.log('optiondata', optionData)  // 接口返回的所有数据
         })  // 页面加载时请求的接口放在页面上
     }, []);
 
 
-
-
-
-    useEffect(function (){
+    useEffect(function () {
         // 样本类型
         let sampSpecimenListOption = formData.sampSpecimenList;
-        let sampSpecimenoptions=[];
+        let sampSpecimenoptions = [];
         for (let item of sampSpecimenListOption) {
             sampSpecimenoptions.push({
-                key:item.sdLabsamp,
-                value:item.naLabsamp
+                key: item.sdLabsamp,
+                value: item.naLabsamp
             });
         }
         // @ts-ignore
@@ -96,16 +95,16 @@ const MyForm: React.FC<FormProps> = (props) => {
 
         // 采样部位
         let sampParttpListOption = formData.sampParttpList;// 这里需要在state里添加默认值，这是eslint的提示，在项目中可能没有这个校验
-        let sampParttpoptions=[];
+        let sampParttpoptions = [];
         for (let item of sampParttpListOption) {
             sampParttpoptions.push({
-                key:item.sdLabsamppartt,
-                value:item.naLabsampparttp
+                key: item.sdLabsamppartt,
+                value: item.naLabsampparttp
             });
         }
         // @ts-ignore
         setSampParttpListOption(sampParttpoptions);
-    },[formData])
+    }, [formData])
 
     // useEffect(function (){
     //     // 执行科室
@@ -119,7 +118,6 @@ const MyForm: React.FC<FormProps> = (props) => {
     //     // @ts-ignore
     //     setNaDepExcOptiopn(naDepExcListoptions);
     // },[optionData])
-
 
 
     // useEffect(() => {
@@ -137,8 +135,6 @@ const MyForm: React.FC<FormProps> = (props) => {
     //     setOptions(result);
     // }, [initsampSpecimenList])
     // // 取到set的值在全局使用的时候需要用useeffect
-
-
 
 
     const TextChange = (
