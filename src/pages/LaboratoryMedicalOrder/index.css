@@ -41,3 +41,8 @@
 .ExecutiveDepartment{
     height:18px;
 }
+.overdue {
+    filter: grayscale(100%);
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}

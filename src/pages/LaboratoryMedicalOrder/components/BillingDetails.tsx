@@ -62,7 +62,7 @@ const BillingDetails: React.FC = () => {
                         addData(text, record, index)
                     }}/>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <DeleteOutlined onClick={() => {
+                    <DeleteOutlined className={index == 0 ? styles.overdue : ''} onClick={() => {
                         delValue(text, record, index)
                     }}/>
                 </div>
@@ -126,6 +126,7 @@ const BillingDetails: React.FC = () => {
         console.log(text);
         console.log(record);
         console.log(index);
+        if (!index) return;
         let temp = [...data]
         temp.splice(index, 1);
         setData(temp)

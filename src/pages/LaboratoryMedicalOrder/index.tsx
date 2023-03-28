@@ -35,7 +35,7 @@ const LaboratoryMedicalOrder: React.FC = () => {
     // TODO：双击获取接口数据，将所选数据填充到页面中，再次双击时进行过滤
     // TODO：再次点击加号按钮，当未选中数据时，手动触动rules
     // TODO：数据完善 √
-    // TODO：首行的禁止删除
+    // TODO：首行的禁止删除 √
 
     return (
         <div className={styles.all}>
