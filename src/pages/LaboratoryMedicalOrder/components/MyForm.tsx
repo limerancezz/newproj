@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Checkbox, Col, DatePicker, Divider, Form, Input, Row, Select, Space} from 'antd';
+import type {SelectProps} from 'antd';
 import moment from 'moment';
 import {DiagnoseEditSelector} from 'hihis-biz';
 import {getFloEc, labMedOrdInit} from "@/services";
@@ -19,13 +20,13 @@ const MyForm: React.FC<FormProps> = (props) => {
         sampSpecimenList: [{sdLabsamp: '', naLabsamp: ''}],
         sampParttpList: [{sdLabsamppartt: '', naLabsampparttp: ''}]
     });
-    const [optionData, setOptionData] = useState([{idDepExc: '', naDepExc: ''}]);
+    const [optionData, setOptionData] = useState<SelectProps['options']>([]); // 定义下拉框类型（SelectProps['options']为固定写法）
     const [sampSpecimenListOption, setSampSpecimenListOption] = useState([]); // 依赖formdata
     const [sampParttpListOption, setSampParttpListOption] = useState([]); // 依赖formdata
     const handleOk = props.handleOk;
     const handleCancel = props.handleCancel;
     const onSure = () => {
-        handleOk();// 关闭modal
+        handleOk();// 通过执行传入的方法，关闭modal
         console.log(form.getFieldsValue());
     };
 
@@ -69,7 +70,7 @@ const MyForm: React.FC<FormProps> = (props) => {
             let temp = []
             for (let item of res) {
                 temp.push({
-                    key: item.idDepExc,
+                    label: item.idDepExc,
                     value: item.naDepExc
                 });
             }
@@ -289,7 +290,7 @@ const MyForm: React.FC<FormProps> = (props) => {
                                     sdDiescrtpCd="1"
                                     // value="22222,ssdfdsfds"
                                     // idMeddiedts={['296850247393390592']}
-                                    onImportSelected={(keys, datas) => {
+                                    onImportSelected={() => {
                                         {
                                         }
                                     }}
